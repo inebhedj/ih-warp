@@ -1,6 +1,8 @@
 # @inebhedj/ih-warp
 
-IH Webpack Assets Replicator Plugin (ihWARP) - A webpack plugin that copies assets referenced in HTML files into the output directory.
+IH Webpack Assets Replicator Plugin (ihWARP)
+
+A webpack plugin that copies assets referenced in HTML files into the output directory.
 
 ## Description
 
