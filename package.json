@@ -1,0 +1,50 @@
+{
+  "name": "@inebhedj/ih-warp",
+  "version": "1.0.0",
+  "description": "IH Webpack Assets Replicator Plugin (ihWARP) - A webpack plugin for copying assets referenced in HTML files.",
+  "main": "lib/ih-warp.js",
+  "scripts": {
+    "publish:npm": "cross-env npm login && npm publish --access public"
+  },
+  "keywords": [
+    "javascript",
+    "vanilla-javascript",
+    "vanilla-js",
+    "webpack",
+    "plugin",
+    "assets",
+    "copy",
+    "html",
+    "inebhedj"
+  ],
+  "author": {
+    "name": "VELKEI Tamás (vt / cjvt) @inebhedj",
+    "email": "cjvt.3o@gmail.com",
+    "url": "https://github.com/inebhedj/"
+  },
+  "homepage": "https://inebhedj.hu/ih-warp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inebhedj/ih-warp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/inebhedj/ih-warp/issues"
+  },
+  "license": "MPL-2.0",
+  "engines": {
+    "node": ">=20.17.0 <21 || >=22 <23 || >=24 <25 || >=26 <27",
+    "npm": ">=10.8.2"
+  },
+  "files": ["lib/ih-warp.js"],
+  "peerDependencies": {
+    "webpack": "^4.0.0 || ^5.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^28.9.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.4.1"
+  }
+}
