@@ -25,7 +25,7 @@
   "homepage": "https://inebhedj.hu/ih-warp",
   "repository": {
     "type": "git",
-    "url": "https://github.com/inebhedj/ih-warp.git"
+    "url": "git+https://github.com/inebhedj/ih-warp.git"
   },
   "bugs": {
     "url": "https://github.com/inebhedj/ih-warp/issues"
@@ -35,7 +35,9 @@
     "node": ">=20.17.0 <21 || >=22 <23 || >=24 <25 || >=26 <27",
     "npm": ">=10.8.2"
   },
-  "files": ["lib/ih-warp.js"],
+  "files": [
+    "lib/ih-warp.js"
+  ],
   "peerDependencies": {
     "webpack": "^4.0.0 || ^5.0.0"
   },
