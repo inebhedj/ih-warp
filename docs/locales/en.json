@@ -1,0 +1,49 @@
+{
+  "badge": "Webpack Plugin",
+  "title": "ihWarp",
+  "subtitle": "IH Webpack Assets Replicator Plugin (ihWARP)",
+  "tagline": "A webpack plugin that copies assets referenced in HTML files into the output directory.",
+  "overviewTitle": "Description",
+  "overview": "Webpack plugin for copying assets referenced in HTML files. This plugin scans through Webpack's output assets for HTML files, extracts asset references (from src, href, meta tags, etc.), and copies the referenced asset files from specified directories (assetPaths) into the Webpack output directory. Files can be excluded from processing via exceptHTML (for HTML files) and exceptAssets (for asset paths). Additionally, if the asset file's extension is listed in mapExtensions, a corresponding .map file will also be copied.",
+  "requirementsTitle": "Requirements",
+  "requirements": [
+    "Node.js LTS (version >=20.17.0 <21 || >=22 <23 || >=24 <25 || >=26 <27)",
+    "npm version >=10.8.2",
+    "Webpack >= 5 (compatible with Webpack 4)"
+  ],
+  "installTitle": "Installation",
+  "usageTitle": "Example usage in webpack.config.js",
+  "optionsTitle": "Configuration Options",
+  "options": [
+    {
+      "name": "assetPaths",
+      "type": "string | string[]",
+      "default": "[]",
+      "description": "Array of directory/directories where the asset files are searched."
+    },
+    {
+      "name": "exceptHTML",
+      "type": "string[]",
+      "default": "[]",
+      "description": "Array of HTML file paths (relative to output) to be excluded from processing."
+    },
+    {
+      "name": "exceptAssets",
+      "type": "string[]",
+      "default": "[]",
+      "description": "Array of asset paths or filenames to be omitted from processing."
+    },
+    {
+      "name": "mapExtensions",
+      "type": "string[]",
+      "default": "['.css', '.js']",
+      "description": "Array of file extensions for which associated .map files are copied."
+    },
+    {
+      "name": "verbose",
+      "type": "boolean",
+      "default": "true",
+      "description": "Enables detailed logging output in the console during the Webpack build."
+    }
+  ]
+}

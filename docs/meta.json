@@ -1,0 +1,19 @@
+{
+  "slug": "ih-warp",
+  "name": {
+    "en": "ihWarp",
+    "hu": "ihWarp"
+  },
+  "fullName": "ih Webpack Assets Replicator Plugin (ihWARP)",
+  "status": "stable",
+  "description": {
+    "en": "Webpack plugin that scans HTML files for asset references and copies them to the output directory.",
+    "hu": "Webpack bővítmény, amely feltérképezi a HTML fájlokban hivatkozott eszközöket és átmásolja őket a kimeneti mappába."
+  },
+  "supportedLanguages": ["en", "hu"],
+  "githubUrl": "https://github.com/inebhedj/ih-warp",
+  "keywords": {
+    "en": "ihWARP, ihWarp, webpack, plugin, assets, copy, replicator, html, inebhedj",
+    "hu": "ihWARP, ihWarp, webpack, bővítmény, eszközök, másolás, html, inebhedj"
+  }
+}

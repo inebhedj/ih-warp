@@ -1,0 +1,51 @@
+---
+import ProductHero from '@/components/doc/ProductHero.astro';
+import SectionBox from '@/components/doc/SectionBox.astro';
+import CodeBlock from '@/components/doc/CodeBlock.astro';
+import CheatsheetTable from '@/components/doc/CheatsheetTable.astro';
+import en from './locales/en.json';
+import hu from './locales/hu.json';
+import exampleCode from './examples/webpack.config.js?raw';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = lang === 'hu' ? hu : en;
+const installCommand = 'npm install --save-dev @inebhedj/ih-warp';
+---
+
+<article class="ih-warp-doc">
+  <ProductHero
+    badge={t.badge}
+    version="v1.0.0"
+    title={t.title}
+    subtitle={t.subtitle}
+    lead={t.tagline}
+  />
+
+  <SectionBox id="overview" title={t.overviewTitle}>
+    <p>{t.overview}</p>
+  </SectionBox>
+
+  <SectionBox id="requirements" title={t.requirementsTitle}>
+    <ul>
+      {t.requirements.map((req) => (
+        <li>{req}</li>
+      ))}
+    </ul>
+  </SectionBox>
+
+  <SectionBox id="installation" title={t.installTitle}>
+    <CodeBlock code={installCommand} lang="bash" />
+  </SectionBox>
+
+  <SectionBox id="usage" title={t.usageTitle}>
+    <CodeBlock code={exampleCode} lang="javascript" title="webpack.config.js" />
+  </SectionBox>
+
+  <SectionBox id="options" title={t.optionsTitle}>
+    <CheatsheetTable rows={t.options} lang={lang} />
+  </SectionBox>
+</article>
