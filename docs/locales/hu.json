@@ -1,0 +1,55 @@
+{
+  "badge": "Webpack bővítmény",
+  "title": "ihWarp",
+  "subtitle": "IH Webpack Assets Replicator Plugin (ihWARP)",
+  "tagline": "Webpack bővítmény a HTML fájlokban hivatkozott eszközök másolására a kimeneti mappába.",
+  "overviewSection": "áttekintés",
+  "definitionsTitle": "definíciók",
+  "overview": "Webpack bővítmény a HTML fájlokban hivatkozott eszközök másolására. A bővítmény végigkeresi a Webpack által generált eszközöket, kiszűri a HTML fájlokat, majd az ezekben szereplő eszköz-referenciákat (pl. src, href, meta tagek) feldolgozva átmásolja az eszközöket a megadott forráskönyvtárakból (assetPaths) a Webpack kimeneti mappájába. Az exceptHTML tömbben megadott HTML fájlokat, illetve az exceptAssets tömbben szereplő eszközöket kihagyja a feldolgozásból. Amennyiben egy fájl kiterjesztése szerepel a mapExtensions listában, a hozzá tartozó forrástérkép (.map) fájl is automatikusan átmásolásra kerül.",
+  "requirementsTitle": "Követelmények",
+  "requirements": [
+    "Node.js LTS (verzió: >=20.17.0 <21 || >=22 <23 || >=24 <25 || >=26 <27)",
+    "npm verzió >=10.8.2",
+    "Webpack >= 5 (kompatibilis Webpack 4-gyel is)"
+  ],
+  "installTitle": "Telepítés",
+  "installHeading": "Telepítés (npm):",
+  "usageTitle": "Használat",
+  "exampleHeading": "Webpack konfiguráció (példa):",
+  "configurationSection": "beállítások",
+  "optionsTitle": "opciók",
+  "optionsDescription": "Az ihWARP bővítmény elérhető konfigurációs beállításai.",
+  "tableFigcaption": "ihWARP konfigurációs beállítások",
+  "options": [
+    {
+      "name": "assetPaths",
+      "type": "string | string[]",
+      "default": "[]",
+      "description": "Könyvtár vagy könyvtárak tömbje, ahol az eszközfájlok kereshetők."
+    },
+    {
+      "name": "exceptHTML",
+      "type": "string[]",
+      "default": "[]",
+      "description": "A feldolgozásból kihagyandó HTML fájlok relatív elérési útjainak tömbje."
+    },
+    {
+      "name": "exceptAssets",
+      "type": "string[]",
+      "default": "[]",
+      "description": "A másolásból és feldolgozásból kihagyandó eszköz-útvonalak tömbje."
+    },
+    {
+      "name": "mapExtensions",
+      "type": "string[]",
+      "default": "['.css', '.js']",
+      "description": "Fájlkiterjesztések tömbje, amelyeknél a hozzájuk tartozó .map fájlok is átmásolásra kerülnek."
+    },
+    {
+      "name": "verbose",
+      "type": "boolean",
+      "default": "true",
+      "description": "Részletes konzolnaplózást engedélyez a Webpack fordítás során."
+    }
+  ]
+}
