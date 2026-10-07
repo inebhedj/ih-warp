@@ -3,7 +3,8 @@
   "title": "ihWarp",
   "subtitle": "IH Webpack Assets Replicator Plugin (ihWARP)",
   "tagline": "Webpack bővítmény a HTML fájlokban hivatkozott eszközök másolására a kimeneti mappába.",
-  "overviewTitle": "Leírás",
+  "overviewSection": "áttekintés",
+  "definitionsTitle": "definíciók",
   "overview": "Webpack bővítmény a HTML fájlokban hivatkozott eszközök másolására. A bővítmény végigkeresi a Webpack által generált eszközöket, kiszűri a HTML fájlokat, majd az ezekben szereplő eszköz-referenciákat (pl. src, href, meta tagek) feldolgozva átmásolja az eszközöket a megadott forráskönyvtárakból (assetPaths) a Webpack kimeneti mappájába. Az exceptHTML tömbben megadott HTML fájlokat, illetve az exceptAssets tömbben szereplő eszközöket kihagyja a feldolgozásból. Amennyiben egy fájl kiterjesztése szerepel a mapExtensions listában, a hozzá tartozó forrástérkép (.map) fájl is automatikusan átmásolásra kerül.",
   "requirementsTitle": "Követelmények",
   "requirements": [
@@ -12,8 +13,13 @@
     "Webpack >= 5 (kompatibilis Webpack 4-gyel is)"
   ],
   "installTitle": "Telepítés",
-  "usageTitle": "Példa használat a webpack.config.js fájlban",
-  "optionsTitle": "Konfigurációs beállítások",
+  "installHeading": "Telepítés (npm):",
+  "usageTitle": "Használat",
+  "exampleHeading": "Webpack konfiguráció (példa):",
+  "configurationSection": "beállítások",
+  "optionsTitle": "opciók",
+  "optionsDescription": "Az ihWARP bővítmény elérhető konfigurációs beállításai.",
+  "tableFigcaption": "ihWARP konfigurációs beállítások",
   "options": [
     {
       "name": "assetPaths",
@@ -43,7 +49,7 @@
       "name": "verbose",
       "type": "boolean",
       "default": "true",
-      "description": "Bekapcsolja a részletes konzolnaplózást a Webpack build folyamán."
+      "description": "Részletes konzolnaplózást engedélyez a Webpack fordítás során."
     }
   ]
 }

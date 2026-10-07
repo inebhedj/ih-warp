@@ -1,51 +1,156 @@
 ---
-import ProductHero from '@/components/doc/ProductHero.astro';
-import SectionBox from '@/components/doc/SectionBox.astro';
-import CodeBlock from '@/components/doc/CodeBlock.astro';
-import CheatsheetTable from '@/components/doc/CheatsheetTable.astro';
-import en from './locales/en.json';
-import hu from './locales/hu.json';
+import T from '@/components/T/T.astro';
+import SectionBox from '@/components/SectionBox/SectionBox.astro';
+import CodeBlock from '@/components/CodeBlock/CodeBlock.astro';
+import CheatsheetTable from '@/components/CheatsheetTable/CheatsheetTable.astro';
 import exampleCode from './examples/webpack.config.js?raw';
 
 interface Props {
   lang?: string;
 }
 
-const { lang = 'en' } = Astro.props;
-const t = lang === 'hu' ? hu : en;
+// Dynamically discover and load all locale files from ./locales/*.json
+const localeFiles = import.meta.glob('./locales/*.json', { eager: true });
+const locales: Record<string, any> = {};
+for (const [path, mod] of Object.entries(localeFiles)) {
+  const match = path.match(/\/([^/]+)\.json$/);
+  if (match) {
+    locales[match[1]] = (mod as any).default ?? mod;
+  }
+}
+
+const supportedLanguages = Object.keys(locales);
+
+// Dynamic helper to generate { [lang]: value } for any key across all loaded locales
+const l10n = (key: string): Record<string, string> => {
+  const dict: Record<string, string> = {};
+  for (const lang of supportedLanguages) {
+    if (locales[lang]?.[key]) {
+      dict[lang] = locales[lang][key];
+    }
+  }
+  return dict;
+};
+
+// Base options from default/fallback language (en)
+const defaultLocale = locales['en'] || Object.values(locales)[0] || {};
+const baseOptions = defaultLocale.options || [];
+
+// Table rows dynamically mapped across all supported languages
+const tableRows = baseOptions.map((opt: any, idx: number) => {
+  const desc: Record<string, string> = {};
+  for (const lang of supportedLanguages) {
+    desc[lang] = locales[lang]?.options?.[idx]?.description || opt.description;
+  }
+  return {
+    name: opt.name,
+    type: opt.type,
+    default: opt.default,
+    description: desc
+  };
+});
+
 const installCommand = 'npm install --save-dev @inebhedj/ih-warp';
+const shortName = 'ihWARP';
 ---
 
 <article class="ih-warp-doc">
-  <ProductHero
-    badge={t.badge}
-    version="v1.0.0"
-    title={t.title}
-    subtitle={t.subtitle}
-    lead={t.tagline}
-  />
+  <h2 id="toc" class="local-link">
+    <T k="doc.toc" />
+  </h2>
 
-  <SectionBox id="overview" title={t.overviewTitle}>
-    <p>{t.overview}</p>
-  </SectionBox>
-
-  <SectionBox id="requirements" title={t.requirementsTitle}>
+  <nav class="toc">
     <ul>
-      {t.requirements.map((req) => (
-        <li>{req}</li>
-      ))}
+      <li>
+        <a href="#overview" class="p">
+          <i>{shortName}</i> <T k="doc.overview" />
+        </a>
+        <ul>
+          <li>
+            <a href="#overview-def" class="p">
+              <T k="doc.definitions" />
+            </a>
+            <ul>
+              <li>
+                <a href="#requirements" class="p">
+                  <T k="doc.requirements" />
+                </a>
+              </li>
+              <li>
+                <a href="#installation" class="p">
+                  <T k="doc.installation" />
+                </a>
+              </li>
+              <li>
+                <a href="#usage" class="p">
+                  <T k="doc.usage" />
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#options" class="p">
+          <i>{shortName}</i> <T k="doc.configuration" />
+        </a>
+        <ul>
+          <li>
+            <a href="#options-def" class="p">
+              <T k="doc.options" />
+            </a>
+          </li>
+        </ul>
+      </li>
     </ul>
+  </nav>
+
+  <h2 id="overview" class="local-link before-local-link">
+    <i>{shortName}</i> <T k="doc.overview" />
+  </h2>
+
+  <SectionBox id="overview-def" title={l10n('definitionsTitle')}>
+    <p><T t={l10n('overview')} /></p>
+
+    <h4 id="requirements" class="local-link">
+      <T t={l10n('requirementsTitle')} />
+    </h4>
+    {supportedLanguages.map((lang) => (
+      locales[lang]?.requirements && (
+        <ul lang={lang}>
+          {locales[lang].requirements.map((req: string) => (
+            <li>{req}</li>
+          ))}
+        </ul>
+      )
+    ))}
+
+    <h4 id="installation" class="local-link">
+      <T t={l10n('installTitle')} />
+    </h4>
+    <h5>
+      <T t={l10n('installHeading')} />
+    </h5>
+    <CodeBlock code={installCommand} lang="bash" collapsible={false} />
+
+    <h4 id="usage" class="local-link">
+      <T t={l10n('usageTitle')} />
+    </h4>
+    <h5>
+      <T t={l10n('exampleHeading')} />
+    </h5>
+    <CodeBlock code={exampleCode} lang="javascript" />
   </SectionBox>
 
-  <SectionBox id="installation" title={t.installTitle}>
-    <CodeBlock code={installCommand} lang="bash" />
-  </SectionBox>
+  <h2 id="options" class="local-link before-local-link">
+    <i>{shortName}</i> <T k="doc.configuration" />
+  </h2>
 
-  <SectionBox id="usage" title={t.usageTitle}>
-    <CodeBlock code={exampleCode} lang="javascript" title="webpack.config.js" />
-  </SectionBox>
-
-  <SectionBox id="options" title={t.optionsTitle}>
-    <CheatsheetTable rows={t.options} lang={lang} />
+  <SectionBox id="options-def" title={l10n('optionsTitle')}>
+    <p><T t={l10n('optionsDescription')} /></p>
+    <CheatsheetTable
+      rows={tableRows}
+      title={l10n('tableFigcaption')}
+    />
   </SectionBox>
 </article>

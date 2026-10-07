@@ -3,7 +3,8 @@
   "title": "ihWarp",
   "subtitle": "IH Webpack Assets Replicator Plugin (ihWARP)",
   "tagline": "A webpack plugin that copies assets referenced in HTML files into the output directory.",
-  "overviewTitle": "Description",
+  "overviewSection": "overview",
+  "definitionsTitle": "definitions",
   "overview": "Webpack plugin for copying assets referenced in HTML files. This plugin scans through Webpack's output assets for HTML files, extracts asset references (from src, href, meta tags, etc.), and copies the referenced asset files from specified directories (assetPaths) into the Webpack output directory. Files can be excluded from processing via exceptHTML (for HTML files) and exceptAssets (for asset paths). Additionally, if the asset file's extension is listed in mapExtensions, a corresponding .map file will also be copied.",
   "requirementsTitle": "Requirements",
   "requirements": [
@@ -12,8 +13,13 @@
     "Webpack >= 5 (compatible with Webpack 4)"
   ],
   "installTitle": "Installation",
-  "usageTitle": "Example usage in webpack.config.js",
-  "optionsTitle": "Configuration Options",
+  "installHeading": "Installation (npm):",
+  "usageTitle": "Usage",
+  "exampleHeading": "Webpack configuration (example):",
+  "configurationSection": "configuration",
+  "optionsTitle": "options",
+  "optionsDescription": "Configuration options available for the ihWARP plugin.",
+  "tableFigcaption": "ihWARP configuration options",
   "options": [
     {
       "name": "assetPaths",
