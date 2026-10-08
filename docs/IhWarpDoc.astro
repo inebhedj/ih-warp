@@ -4,6 +4,8 @@ import SectionBox from '@/components/SectionBox/SectionBox.astro';
 import CodeBlock from '@/components/CodeBlock/CodeBlock.astro';
 import CheatsheetTable from '@/components/CheatsheetTable/CheatsheetTable.astro';
 import exampleCode from './examples/webpack.config.js?raw';
+import meta from './meta.json';
+import pkg from '../package.json';
 
 interface Props {
   lang?: string;
@@ -20,17 +22,6 @@ for (const [path, mod] of Object.entries(localeFiles)) {
 }
 
 const supportedLanguages = Object.keys(locales);
-
-// Dynamic helper to generate { [lang]: value } for any key across all loaded locales
-const l10n = (key: string): Record<string, string> => {
-  const dict: Record<string, string> = {};
-  for (const lang of supportedLanguages) {
-    if (locales[lang]?.[key]) {
-      dict[lang] = locales[lang][key];
-    }
-  }
-  return dict;
-};
 
 // Base options from default/fallback language (en)
 const defaultLocale = locales['en'] || Object.values(locales)[0] || {};
@@ -50,11 +41,11 @@ const tableRows = baseOptions.map((opt: any, idx: number) => {
   };
 });
 
-const installCommand = 'npm install --save-dev @inebhedj/ih-warp';
-const shortName = 'ihWARP';
+const installCommand = meta.installCommand ?? `npm install --save-dev ${pkg.name}`;
+const shortName = meta.name || pkg.name;
 ---
 
-<article class="ih-warp-doc">
+<article>
   <h2 id="toc" class="local-link">
     <T k="doc.toc" />
   </h2>
@@ -63,7 +54,7 @@ const shortName = 'ihWARP';
     <ul>
       <li>
         <a href="#overview" class="p">
-          <i>{shortName}</i> <T k="doc.overview" />
+          {shortName} <T k="doc.overview" />
         </a>
         <ul>
           <li>
@@ -92,7 +83,7 @@ const shortName = 'ihWARP';
       </li>
       <li>
         <a href="#options" class="p">
-          <i>{shortName}</i> <T k="doc.configuration" />
+          {shortName} <T k="doc.configuration" />
         </a>
         <ul>
           <li>
@@ -105,52 +96,86 @@ const shortName = 'ihWARP';
     </ul>
   </nav>
 
-  <h2 id="overview" class="local-link before-local-link">
-    <i>{shortName}</i> <T k="doc.overview" />
+  <h2 id="overview" class="local-link">
+    {shortName} <T k="doc.overview" />
   </h2>
 
-  <SectionBox id="overview-def" title={l10n('definitionsTitle')}>
-    <p><T t={l10n('overview')} /></p>
+  <SectionBox id="overview-def" titleK="doc.definitions">
+    <p>
+      {
+        supportedLanguages.map(
+          (l) => locales[l]?.overview && <span lang={l}>{locales[l].overview}</span>
+        )
+      }
+    </p>
 
     <h4 id="requirements" class="local-link">
-      <T t={l10n('requirementsTitle')} />
+      <T k="doc.requirements" />
     </h4>
-    {supportedLanguages.map((lang) => (
-      locales[lang]?.requirements && (
-        <ul lang={lang}>
-          {locales[lang].requirements.map((req: string) => (
-            <li>{req}</li>
-          ))}
-        </ul>
+    {
+      supportedLanguages.map(
+        (lang) =>
+          locales[lang]?.requirements && (
+            <ul lang={lang}>
+              {locales[lang].requirements.map((req: string) => (
+                <li>{req}</li>
+              ))}
+            </ul>
+          )
       )
-    ))}
+    }
 
     <h4 id="installation" class="local-link">
-      <T t={l10n('installTitle')} />
+      <T k="doc.installation" />
     </h4>
     <h5>
-      <T t={l10n('installHeading')} />
+      {
+        supportedLanguages.map(
+          (l) => locales[l]?.installHeading && <span lang={l}>{locales[l].installHeading}</span>
+        )
+      }
     </h5>
     <CodeBlock code={installCommand} lang="bash" collapsible={false} />
 
     <h4 id="usage" class="local-link">
-      <T t={l10n('usageTitle')} />
+      <T k="doc.usage" />
     </h4>
     <h5>
-      <T t={l10n('exampleHeading')} />
+      {
+        supportedLanguages.map(
+          (l) => locales[l]?.exampleHeading && <span lang={l}>{locales[l].exampleHeading}</span>
+        )
+      }
     </h5>
     <CodeBlock code={exampleCode} lang="javascript" />
   </SectionBox>
 
-  <h2 id="options" class="local-link before-local-link">
-    <i>{shortName}</i> <T k="doc.configuration" />
+  <h2 id="options" class="local-link">
+    {shortName} <T k="doc.configuration" />
   </h2>
 
-  <SectionBox id="options-def" title={l10n('optionsTitle')}>
-    <p><T t={l10n('optionsDescription')} /></p>
-    <CheatsheetTable
-      rows={tableRows}
-      title={l10n('tableFigcaption')}
-    />
+  <SectionBox id="options-def" titleK="doc.options">
+    <p>
+      {
+        supportedLanguages.map(
+          (l) =>
+            locales[l]?.optionsDescription && (
+              <span lang={l}>{locales[l].optionsDescription}</span>
+            )
+        )
+      }
+    </p>
+    <CheatsheetTable rows={tableRows}>
+      <span slot="title">
+        {
+          supportedLanguages.map(
+            (l) =>
+              locales[l]?.tableFigcaption && (
+                <span lang={l}>{locales[l].tableFigcaption}</span>
+              )
+          )
+        }
+      </span>
+    </CheatsheetTable>
   </SectionBox>
 </article>
