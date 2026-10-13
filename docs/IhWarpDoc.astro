@@ -6,6 +6,7 @@ import CheatsheetTable from '@/components/CheatsheetTable/CheatsheetTable.astro'
 import exampleCode from './examples/webpack.config.js?raw';
 import meta from './meta.json';
 import pkg from '../package.json';
+import { defaultLanguage } from '@/config/languages';
 
 interface Props {
   lang?: string;
@@ -23,8 +24,8 @@ for (const [path, mod] of Object.entries(localeFiles)) {
 
 const supportedLanguages = Object.keys(locales);
 
-// Base options from default/fallback language (en)
-const defaultLocale = locales['en'] || Object.values(locales)[0] || {};
+// Base options from default/fallback language
+const defaultLocale = locales[defaultLanguage] || Object.values(locales)[0] || {};
 const baseOptions = defaultLocale.options || [];
 
 // Table rows dynamically mapped across all supported languages
