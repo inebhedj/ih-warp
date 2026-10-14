@@ -1,14 +1,10 @@
-const path = require('path');
 const ihWARP = require('@inebhedj/ih-warp');
+/* other codes */
 
 module.exports = {
-  mode: 'production',
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
-  },
+  /* webpack configuration settings... */
   plugins: [
+    /* other plugins... */
     new ihWARP({
       assetPaths: ['./src/assets'],
       exceptHTML: ['ignore-this.html'],
@@ -16,5 +12,7 @@ module.exports = {
       mapExtensions: ['.css', '.js'],
       verbose: true
     })
+    /* other plugins... */
   ]
+  /* other configuration settings... */
 };

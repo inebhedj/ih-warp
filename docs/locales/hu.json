@@ -2,10 +2,12 @@
   "badge": "Webpack bővítmény",
   "title": "ihWarp",
   "subtitle": "IH Webpack Assets Replicator Plugin (ihWARP)",
-  "tagline": "Webpack bővítmény a HTML fájlokban hivatkozott eszközök másolására a kimeneti mappába.",
+  "tagline": "Webpack plugin a HTML-fájlokban hivatkozott erőforrások (assetek) másolásához.",
+  "description": "Webpack plugin a HTML-fájlokban hivatkozott erőforrások (assetek) másolásához.",
+  "keywords": "ihWARP, ihWarp, javascript, vanilla-javascript, vanilla-js, webpack, plugin, assets, copy, html, inebhedj",
   "overviewSection": "áttekintés",
   "definitionsTitle": "definíciók",
-  "overview": "Webpack bővítmény a HTML fájlokban hivatkozott eszközök másolására. A bővítmény végigkeresi a Webpack által generált eszközöket, kiszűri a HTML fájlokat, majd az ezekben szereplő eszköz-referenciákat (pl. src, href, meta tagek) feldolgozva átmásolja az eszközöket a megadott forráskönyvtárakból (assetPaths) a Webpack kimeneti mappájába. Az exceptHTML tömbben megadott HTML fájlokat, illetve az exceptAssets tömbben szereplő eszközöket kihagyja a feldolgozásból. Amennyiben egy fájl kiterjesztése szerepel a mapExtensions listában, a hozzá tartozó forrástérkép (.map) fájl is automatikusan átmásolásra kerül.",
+  "overview": "Webpack plugin a HTML-fájlokban hivatkozott erőforrások (assetek) másolásához. A plugin átvizsgálja a Webpack kimeneti assetjei között található HTML-fájlokat, kinyeri belőlük az erőforrás-hivatkozásokat (a src és href attribútumokból, a meta címkékből stb.), majd a hivatkozott fájlokat a megadott könyvtárakból (assetPaths) átmásolja a Webpack kimeneti könyvtárába. Bizonyos fájlok kizárhatók a feldolgozásból az exceptHTML (HTML-fájlok esetén) és az exceptAssets (asset-elérési utak esetén) beállítással. Ezenkívül, ha az asset fájl kiterjesztése szerepel a mapExtensions listában, a hozzá tartozó .map fájlt is átmásolja.",
   "requirementsTitle": "Követelmények",
   "requirements": [
     "Node.js LTS (verzió: >=20.17.0 <21 || >=22 <23 || >=24 <25 || >=26 <27)",
@@ -25,31 +27,31 @@
       "name": "assetPaths",
       "type": "string | string[]",
       "default": "[]",
-      "description": "Könyvtár vagy könyvtárak tömbje, ahol az eszközfájlok kereshetők."
+      "description": "Könyvtár(ak) tömbje, ahol az asset fájlokat keresi a plugin."
     },
     {
       "name": "exceptHTML",
       "type": "string[]",
       "default": "[]",
-      "description": "A feldolgozásból kihagyandó HTML fájlok relatív elérési útjainak tömbje."
+      "description": "A feldolgozásból kizárandó HTML-fájlok relativ elérési útjainak tömbje (a kimeneti könyvtárhoz viszonyítva)."
     },
     {
       "name": "exceptAssets",
       "type": "string[]",
       "default": "[]",
-      "description": "A másolásból és feldolgozásból kihagyandó eszköz-útvonalak tömbje."
+      "description": "A feldolgozásból kihagyandó asset-elérési utak vagy fájlnevek tömbje."
     },
     {
       "name": "mapExtensions",
       "type": "string[]",
       "default": "['.css', '.js']",
-      "description": "Fájlkiterjesztések tömbje, amelyeknél a hozzájuk tartozó .map fájlok is átmásolásra kerülnek."
+      "description": "Azon fájlkiterjesztések tömbje, amelyekhez tartozó .map fájlok is átmásolásra kerülnek."
     },
     {
       "name": "verbose",
       "type": "boolean",
       "default": "true",
-      "description": "Részletes konzolnaplózást engedélyez a Webpack fordítás során."
+      "description": "Részletes naplózást engedélyez a konzolon a Webpack build során."
     }
   ]
 }
