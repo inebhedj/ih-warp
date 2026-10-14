@@ -52,6 +52,27 @@ module.exports = {
 - `mapExtensions`: Array of file extensions for which associated .map files are copied. (default: ['.css', '.js'])
 - `verbose`: Enables vlogging output.
 
+## Releasing (maintainer cheatsheet)
+
+Publishing is done by the GitHub Action [`publish.yml`](.github/workflows/publish.yml) via npm trusted publishing (OIDC). No npm token or 2FA code is needed.
+
+```sh
+# 1. Bump the version (commits + creates the vX.Y.Z tag), then push both
+npm version patch        # or: minor / major
+git push --follow-tags
+
+# 2. Publish a GitHub Release for that tag -> triggers the npm publish
+gh release create vX.Y.Z --generate-notes
+```
+
+Without the GitHub CLI (`gh`), do step 2 on the website instead: repository page → **Releases** → **Draft a new release** → choose the `vX.Y.Z` tag → (optionally **Generate release notes**) → **Publish release**. The result is the same; follow the run under the **Actions** tab.
+
+- The release tag must exactly match the `package.json` version (with a `v` prefix), otherwise the workflow fails.
+- The workflow runs `npm ci`, ESLint, the tag/version check, then `npm publish --access public --provenance`.
+- One-time setup: npmjs.com → package **Settings → Trusted Publisher** → GitHub Actions: owner `inebhedj`, repository `ih-warp`, workflow `publish.yml`.
+- A version can't be published twice: always bump before releasing.
+- Manual fallback (interactive login + 2FA): `npm run publish:npm`.
+
 ## License
 
 MPL 2.0
