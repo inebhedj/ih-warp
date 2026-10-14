@@ -27,7 +27,7 @@ trap 'rm -rf "$TMP"' EXIT
 
 for s in 16 32 48 64 180 192 512; do
   sed -E 's/ (width|height)="[^"]*"//g; s/<svg /<svg width="'"$s"'" height="'"$s"'" fill="'"$FG"'" /' "$SRC" > "$TMP/$s.svg"
-  "$IM" -background "$BG" -density 72 "$TMP/$s.svg" -flatten "PNG32:favicon-${s}x${s}.png"
+  "$IM" -background "$BG" -density 96 "$TMP/$s.svg" -flatten "PNG32:favicon-${s}x${s}.png"
 done
 
 cp favicon-180x180.png apple-touch-icon.png
