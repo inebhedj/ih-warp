@@ -69,7 +69,12 @@ Without the GitHub CLI (`gh`), do step 2 on the website instead: repository page
 
 - The release tag must exactly match the `package.json` version (with a `v` prefix), otherwise the workflow fails.
 - The workflow runs `npm ci`, ESLint, the tag/version check, then `npm publish --access public --provenance`.
-- One-time setup: npmjs.com → package **Settings → Trusted Publisher** → GitHub Actions: owner `inebhedj`, repository `ih-warp`, workflow `publish.yml`.
+- One-time setup on npmjs.com → package **Settings**:
+  - **Trusted Publisher** → GitHub Actions: owner `inebhedj`, repository `ih-warp`, workflow filename `publish.yml`.
+    - Environment name: leave empty (the workflow uses no `environment:`).
+    - Allowed actions: check **allow npm publish** (the workflow publishes directly); leave **allow npm dist-tag** unchecked.
+  - **Publishing access** → *Require two-factor authentication and disallow bypass 2fa tokens*.
+  - The Trusted Publisher shows *Pending validation* until the first successful publish through the workflow; do that before the deadline shown on the page.
 - A version can't be published twice: always bump before releasing.
 - Manual fallback (interactive login + 2FA): `npm run publish:npm`.
 
