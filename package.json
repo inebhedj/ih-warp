@@ -4,7 +4,7 @@
   "description": "IH Webpack Assets Replicator Plugin (ihWARP) - A webpack plugin for copying assets referenced in HTML files.",
   "main": "lib/ih-warp.js",
   "scripts": {
-    "publish:npm": "cross-env npm login && npm publish --access public"
+    "publish:npm": "npm login && npm publish --access public"
   },
   "keywords": [
     "javascript",
@@ -40,7 +40,6 @@
     "webpack": "^4.0.0 || ^5.0.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^28.9.0",
