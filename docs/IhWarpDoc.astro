@@ -12,13 +12,34 @@ interface Props {
   lang?: string;
 }
 
+interface OptionItem {
+  name: string;
+  type: string;
+  default: string;
+  description: string;
+}
+
+interface ProductLocaleContent {
+  overview?: string;
+  requirements?: string[];
+  installHeading?: string;
+  exampleHeading?: string;
+  optionsDescription?: string;
+  tableFigcaption?: string;
+  options?: OptionItem[];
+  [key: string]: unknown;
+}
+
 // Dynamically discover and load all locale files from ./locales/*.json
-const localeFiles = import.meta.glob('./locales/*.json', { eager: true });
-const locales: Record<string, any> = {};
+const localeFiles = import.meta.glob<ProductLocaleContent | { default: ProductLocaleContent }>(
+  './locales/*.json',
+  { eager: true }
+);
+const locales: Record<string, ProductLocaleContent> = {};
 for (const [path, mod] of Object.entries(localeFiles)) {
   const match = path.match(/\/([^/]+)\.json$/);
   if (match) {
-    locales[match[1]] = (mod as any).default ?? mod;
+    locales[match[1]] = ('default' in mod ? mod.default : mod) as ProductLocaleContent;
   }
 }
 
@@ -29,7 +50,7 @@ const defaultLocale = locales[defaultLanguage] || Object.values(locales)[0] || {
 const baseOptions = defaultLocale.options || [];
 
 // Table rows dynamically mapped across all supported languages
-const tableRows = baseOptions.map((opt: any, idx: number) => {
+const tableRows = baseOptions.map((opt, idx: number) => {
   const desc: Record<string, string> = {};
   for (const lang of supportedLanguages) {
     desc[lang] = locales[lang]?.options?.[idx]?.description || opt.description;
@@ -51,7 +72,7 @@ const shortName = meta.name || pkg.name;
     <T k="doc.toc" />
   </h2>
 
-  <nav class="toc">
+  <nav class="toc" aria-labelledby="toc">
     <ul>
       <li>
         <a href="#overview" class="p">
