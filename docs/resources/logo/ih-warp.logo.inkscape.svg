@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
-   sodipodi:docname="inebhedj.hu.logo.inkscape.svg"
+   sodipodi:docname="ih-warp.logo.inkscape.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="32.514018"
-     inkscape:cx="4.9363324"
-     inkscape:cy="9.3190574"
+     inkscape:zoom="40.734563"
+     inkscape:cx="8.6044865"
+     inkscape:cy="10.359753"
      inkscape:window-width="1728"
      inkscape:window-height="1055"
      inkscape:window-x="0"
@@ -86,19 +86,9 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-26.759001,-60.401001)">
-    <g
-       id="g5"
-       transform="translate(-0.04882511,-3.453624e-5)">
-      <path
-         id="text1"
-         style="font-size:4.23333px;font-family:'Rovas Mono Unicode';-inkscape-font-specification:'Rovas Mono Unicode';writing-mode:lr-tb;direction:ltr;fill:#000000;stroke-width:0.264583"
-         d="m 28.302665,61.140454 -0.262516,0.02119 -0.0088,0.326079 0.711584,0.660425 -0.711584,0.812353 0.635103,0.550354 -0.626318,0.596863 v 0.296623 h 0.313159 l 0.636654,-0.555005 v -0.549321 l -0.433566,-0.36897 0.433566,-0.458886 v -0.636137 z" />
-      <path
-         d="m 29.357232,64.158643 v -1.96693 l 0.709672,-0.249699 0.170847,-0.275984 -0.25408,-0.157704 -0.648342,0.267222 v -0.446831 l -0.183989,-0.188369 -0.179608,0.201511 c -0.0033,0.343233 0.0022,0.686319 0.0088,1.029463 l 0.0088,1.796082 0.179609,0.245319 z"
-         id="text2"
-         style="font-size:4.38069px;font-family:'Rovas Mono Unicode';-inkscape-font-specification:'Rovas Mono Unicode';stroke-width:0.273793"
-         aria-label="࡫"
-         sodipodi:nodetypes="ccccccccccccc" />
-    </g>
+    <path
+       id="text2-3"
+       style="font-size:4.23333px;font-family:'Rovas Mono Unicode';-inkscape-font-specification:'Rovas Mono Unicode';stroke-width:0.264583"
+       d="m 29.124149,61.118204 -1.422136,0.592729 -0.216007,0.376721 0.384989,0.04237 0.859379,-0.406177 v 0.49506 l -0.922424,0.393774 -0.228927,0.347266 0.296623,0.08062 0.84646,-0.351399 0.0083,0.414961 -0.854728,0.444418 -0.173633,0.26665 0.258382,0.09715 0.761711,-0.338481 v 0.489376 0.0098 l -5.17e-4,0.01447 0.207223,0.326078 0.183451,-0.310058 0.01189,-0.01757 v -0.0026 l 0.0124,-0.02119 V 62.5977 l 0.575675,0.719336 0.65164,-0.914156 v 1.65933 l 0.233061,0.372587 0.186035,-0.359668 v -2.921268 l -1.07077,1.443839 -0.588077,-0.821655 z" />
   </g>
 </svg>
