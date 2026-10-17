@@ -6,5 +6,13 @@
   "installCommand": "npm install --save-dev @inebhedj/ih-warp",
   "supportedLanguages": ["en", "hu"],
   "githubUrl": "https://github.com/inebhedj/ih-warp",
-  "maskIconColor": "#00b0ff"
+  "maskIconColor": "#00b0ff",
+  "tags": [
+    "webpack",
+    "webpack-plugin",
+    "assets",
+    "html",
+    "build-tools",
+    "nodejs"
+  ]
 }
