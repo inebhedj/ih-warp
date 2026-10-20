@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "runtime": {
-    "publish": ["ihwarp.png"]
+    "publish": ["public/ih-warp.png"]
   },
   "content": [
     { "type": "h2", "key": "overviewSection" },

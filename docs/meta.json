@@ -7,7 +7,7 @@
   "supportedLanguages": ["en", "hu"],
   "githubUrl": "https://github.com/inebhedj/ih-warp",
   "maskIconColor": "#00b0ff",
-  "thumbnail": "/ih-warp/ihwarp.png",
+  "thumbnail": "/ih-warp/ih-warp.png",
   "tags": [
     "webpack",
     "webpack-plugin",
