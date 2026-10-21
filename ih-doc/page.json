@@ -3,125 +3,137 @@
   "runtime": {
     "publish": ["ih-warp.png"]
   },
-  "content": [
-    { "type": "h2", "key": "overviewSection" },
-    {
-      "type": "section-box",
-      "key": "definitionsTitle",
-      "blocks": [
-        { "type": "text", "key": "overview" },
-        { "type": "h4", "key": "requirementsTitle" },
-        {
-          "type": "list",
-          "items": [
-            { "key": "reqNode" },
-            { "key": "reqNpm" },
-            { "key": "reqWebpack" }
-          ]
-        },
-        { "type": "h4", "key": "installTitle" },
-        { "type": "h5", "key": "installHeading" },
-        {
-          "type": "code",
-          "value": "npm install --save-dev @inebhedj/ih-warp",
-          "lang": "bash",
-          "numbered": false,
-          "collapsible": false
-        },
-        { "type": "h4", "key": "usageTitle" },
-        { "type": "h5", "key": "exampleHeading" },
-        {
-          "type": "code",
-          "file": "examples/webpack.config.js",
-          "lang": "javascript"
-        }
-      ]
-    },
-    { "type": "h2", "key": "configurationSection" },
-    {
-      "type": "section-box",
-      "key": "optionsTitle",
-      "blocks": [
-        { "type": "text", "key": "optionsDescription" },
-        {
-          "type": "table",
-          "caption": "tableFigcaption",
-          "columns": [
-            { "title": "tableOption" },
-            { "title": "tableType", "small": true },
-            { "title": "tableDefault", "small": true },
-            { "title": "tableDescription" }
-          ],
-          "rows": [
-            [
-              {
-                "th": true,
-                "content": [{ "type": "text", "value": "assetPaths" }]
-              },
-              {
-                "small": true,
-                "content": [{ "type": "code", "value": "string | string[]" }]
-              },
-              { "small": true, "content": [{ "type": "code", "value": "[]" }] },
-              { "content": [{ "type": "text", "key": "optAssetPaths" }] }
-            ],
-            [
-              {
-                "th": true,
-                "content": [{ "type": "text", "value": "exceptHTML" }]
-              },
-              {
-                "small": true,
-                "content": [{ "type": "code", "value": "string[]" }]
-              },
-              { "small": true, "content": [{ "type": "code", "value": "[]" }] },
-              { "content": [{ "type": "text", "key": "optExceptHTML" }] }
-            ],
-            [
-              {
-                "th": true,
-                "content": [{ "type": "text", "value": "exceptAssets" }]
-              },
-              {
-                "small": true,
-                "content": [{ "type": "code", "value": "string[]" }]
-              },
-              { "small": true, "content": [{ "type": "code", "value": "[]" }] },
-              { "content": [{ "type": "text", "key": "optExceptAssets" }] }
-            ],
-            [
-              {
-                "th": true,
-                "content": [{ "type": "text", "value": "mapExtensions" }]
-              },
-              {
-                "small": true,
-                "content": [{ "type": "code", "value": "string[]" }]
-              },
-              {
-                "small": true,
-                "content": [{ "type": "code", "value": "['.css', '.js']" }]
-              },
-              { "content": [{ "type": "text", "key": "optMapExtensions" }] }
-            ],
-            [
-              {
-                "th": true,
-                "content": [{ "type": "text", "value": "verbose" }]
-              },
-              {
-                "small": true,
-                "content": [{ "type": "code", "value": "boolean" }]
-              },
-              {
-                "small": true,
-                "content": [{ "type": "code", "value": "true" }]
-              },
-              { "content": [{ "type": "text", "key": "optVerbose" }] }
+  "content": {
+    "main": [
+      { "type": "h2", "key": "overviewSection" },
+      {
+        "type": "section-box",
+        "key": "definitionsTitle",
+        "blocks": [
+          { "type": "text", "key": "overview" },
+          { "type": "h4", "key": "requirementsTitle" },
+          {
+            "type": "list",
+            "items": [
+              { "key": "reqNode" },
+              { "key": "reqNpm" },
+              { "key": "reqWebpack" }
             ]
-          ]
-        }
-      ]
-    }
-  ]
+          },
+          { "type": "h4", "key": "installTitle" },
+          { "type": "h5", "key": "installHeading" },
+          {
+            "type": "code",
+            "value": "npm install --save-dev @inebhedj/ih-warp",
+            "lang": "bash",
+            "numbered": false,
+            "collapsible": false
+          },
+          { "type": "h4", "key": "usageTitle" },
+          { "type": "h5", "key": "exampleHeading" },
+          {
+            "type": "code",
+            "file": "examples/webpack.config.js",
+            "lang": "javascript"
+          }
+        ]
+      },
+      { "type": "h2", "key": "configurationSection" },
+      {
+        "type": "section-box",
+        "key": "optionsTitle",
+        "blocks": [
+          { "type": "text", "key": "optionsDescription" },
+          {
+            "type": "table",
+            "caption": "tableFigcaption",
+            "columns": [
+              { "title": "tableOption" },
+              { "title": "tableType", "small": true },
+              { "title": "tableDefault", "small": true },
+              { "title": "tableDescription" }
+            ],
+            "rows": [
+              [
+                {
+                  "th": true,
+                  "content": [{ "type": "text", "value": "assetPaths" }]
+                },
+                {
+                  "small": true,
+                  "content": [{ "type": "code", "value": "string | string[]" }]
+                },
+                {
+                  "small": true,
+                  "content": [{ "type": "code", "value": "[]" }]
+                },
+                { "content": [{ "type": "text", "key": "optAssetPaths" }] }
+              ],
+              [
+                {
+                  "th": true,
+                  "content": [{ "type": "text", "value": "exceptHTML" }]
+                },
+                {
+                  "small": true,
+                  "content": [{ "type": "code", "value": "string[]" }]
+                },
+                {
+                  "small": true,
+                  "content": [{ "type": "code", "value": "[]" }]
+                },
+                { "content": [{ "type": "text", "key": "optExceptHTML" }] }
+              ],
+              [
+                {
+                  "th": true,
+                  "content": [{ "type": "text", "value": "exceptAssets" }]
+                },
+                {
+                  "small": true,
+                  "content": [{ "type": "code", "value": "string[]" }]
+                },
+                {
+                  "small": true,
+                  "content": [{ "type": "code", "value": "[]" }]
+                },
+                { "content": [{ "type": "text", "key": "optExceptAssets" }] }
+              ],
+              [
+                {
+                  "th": true,
+                  "content": [{ "type": "text", "value": "mapExtensions" }]
+                },
+                {
+                  "small": true,
+                  "content": [{ "type": "code", "value": "string[]" }]
+                },
+                {
+                  "small": true,
+                  "content": [{ "type": "code", "value": "['.css', '.js']" }]
+                },
+                { "content": [{ "type": "text", "key": "optMapExtensions" }] }
+              ],
+              [
+                {
+                  "th": true,
+                  "content": [{ "type": "text", "value": "verbose" }]
+                },
+                {
+                  "small": true,
+                  "content": [{ "type": "code", "value": "boolean" }]
+                },
+                {
+                  "small": true,
+                  "content": [{ "type": "code", "value": "true" }]
+                },
+                { "content": [{ "type": "text", "key": "optVerbose" }] }
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "aside": []
+  }
 }
