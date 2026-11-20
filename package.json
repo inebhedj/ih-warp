@@ -1,6 +1,6 @@
 {
   "name": "@inebhedj/ih-warp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "IH Webpack Assets Replicator Plugin (ihWARP) - A webpack plugin for copying assets referenced in HTML files.",
   "main": "lib/ih-warp.js",
   "scripts": {
