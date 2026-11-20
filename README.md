@@ -13,7 +13,7 @@ extracts asset references (from src, href, meta tags, etc.), and copies the refe
 
 - Node.js LTS (version >=20.17.0 <21 || >=22 <23 || >=24 <25 || >=26 <27)  
 - Corresponding npm version 
-- Webpack >= 5 (maybe works with webpack 4)
+- Webpack 5. Webpack 4 is accepted by the peer dependency range, but it is not tested.
 
 ## Installation
 
@@ -50,33 +50,7 @@ module.exports = {
 - `exceptHTML`: Array of HTML file paths (relative) to be excluded.
 - `exceptAssets`: Array of asset paths to be omitted from processing.
 - `mapExtensions`: Array of file extensions for which associated .map files are copied. (default: ['.css', '.js'])
-- `verbose`: Enables vlogging output.
-
-## Releasing (maintainer cheatsheet)
-
-Publishing is done by the GitHub Action [`publish.yml`](.github/workflows/publish.yml) via npm trusted publishing (OIDC). No npm token or 2FA code is needed.
-
-```sh
-# 1. Bump the version (commits + creates the vX.Y.Z tag), then push both
-npm version patch        # or: minor / major
-git push --follow-tags
-
-# 2. Publish a GitHub Release for that tag -> triggers the npm publish
-gh release create vX.Y.Z --generate-notes
-```
-
-Without the GitHub CLI (`gh`), do step 2 on the website instead: repository page → **Releases** → **Draft a new release** → choose the `vX.Y.Z` tag → (optionally **Generate release notes**) → **Publish release**. The result is the same; follow the run under the **Actions** tab.
-
-- The release tag must exactly match the `package.json` version (with a `v` prefix), otherwise the workflow fails.
-- The workflow runs `npm ci`, ESLint, the tag/version check, then `npm publish --access public --provenance`.
-- One-time setup on npmjs.com → package **Settings**:
-  - **Trusted Publisher** → GitHub Actions: owner `inebhedj`, repository `ih-warp`, workflow filename `publish.yml`.
-    - Environment name: leave empty (the workflow uses no `environment:`).
-    - Allowed actions: check **allow npm publish** (the workflow publishes directly); leave **allow npm dist-tag** unchecked.
-  - **Publishing access** → *Require two-factor authentication and disallow bypass 2fa tokens*.
-  - The Trusted Publisher shows *Pending validation* until the first successful publish through the workflow; do that before the deadline shown on the page.
-- A version can't be published twice: always bump before releasing.
-- Manual fallback (interactive login + 2FA): `npm run publish:npm`.
+- `verbose`: Enables verbose logging output.
 
 ## License
 
